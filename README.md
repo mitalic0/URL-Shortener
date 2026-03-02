@@ -82,6 +82,19 @@ http://127.0.0.1:5000
 
 ------------------------------------------------------------------------
 
+## 📸 Screenshots
+
+### 🏠 Homepage
+![Homepage](screenshots/homepage.png)
+
+### 🔗 Shortened URL Output
+![Shortened URL Output](screenshots/shortened_url_output.png)
+
+### 🔍 Search Functionality
+![Search URL Output](screenshots/search_url_output.png)
+
+------------------------------------------------------------------------
+
 ## 🔮 Future Improvements
 
 -   User authentication system
