@@ -1,0 +1,49 @@
+
+{% extends 'base.html' %}
+{% block content %}
+
+<h3>Create Short URL</h3>
+<form method="POST" class="row g-2 mb-4">
+  <div class="col-md-6">
+    <input name="original_url" class="form-control" placeholder="Enter long URL" required>
+  </div>
+  <div class="col-md-3">
+    <input name="custom_code" class="form-control" placeholder="Custom alias (optional)">
+  </div>
+  <div class="col-md-3">
+    <button class="btn btn-primary w-100">Shorten</button>
+  </div>
+</form>
+
+<form method="GET" class="mb-3">
+  <input name="search" class="form-control" placeholder="Search URLs..." value="{{ request.args.get('search','') }}">
+</form>
+
+<table class="table table-bordered">
+<tr>
+<th>Original URL</th>
+<th>Short URL</th>
+<th>Clicks</th>
+<th>Created</th>
+<th>Actions</th>
+</tr>
+
+{% for url in urls %}
+<tr>
+<td>{{ url.original_url }}</td>
+<td>
+<a href="{{ url_for('redirect_url', short_code=url.short_code) }}" target="_blank">
+{{ request.host_url }}{{ url.short_code }}
+</a>
+</td>
+<td>{{ url.clicks }}</td>
+<td>{{ url.created_at.strftime('%Y-%m-%d %H:%M') }}</td>
+<td>
+<a href="{{ url_for('delete', id=url.id) }}" class="btn btn-danger btn-sm">Delete</a>
+</td>
+</tr>
+{% endfor %}
+
+</table>
+
+{% endblock %}
